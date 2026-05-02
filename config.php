@@ -6,17 +6,7 @@ date_default_timezone_set("Asia/Manila");
 // Start session
 session_start();
 
-// Function to authenticate admin
-function authenticate_admin($username, $password) {
-    // Simple admin authentication (for demo purposes)
-    if ($username === 'CEIT_SC2026' && $password === '081825_ceitsc') {
-        $_SESSION['admin_logged_in'] = true;
-        $_SESSION['admin_username'] = $username;
-        return array('success' => true, 'message' => 'Login successful');
-    } else {
-        return array('success' => false, 'message' => 'Invalid username or password');
-    }
-}
+
 
 // Function to get duty logs with filtering for admin
 function get_all_duty_logs($filter_committee = '', $filter_date = '', $filter_month = '', $filter_week = '') {

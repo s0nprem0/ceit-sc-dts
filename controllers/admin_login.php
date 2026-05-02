@@ -1,17 +1,21 @@
 <?php
+
 require_once 'config.php';
+require_once __DIR__ . '/../helpers/Utils.php';
+require_once __DIR__ . '/../helpers/AuthHelper.php';
 
 $message = '';
 $message_type = '';
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = sanitize_input($_POST['username']);
-    $password = $_POST['password'];
-    
-    $result = authenticate_admin($username, $password);
+    $username = Utils::sanitizeInput($_POST['username'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    $result = AuthHelper::authenticateAdmin($username, $password);
     $message = $result['message'];
     $message_type = $result['success'] ? 'success' : 'error';
-    
+
     if ($result['success']) {
         header('Location: admin_dashboard.php');
         exit();
@@ -33,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             --ceit-light-orange: #F4A441;
             --ceit-dark: #1C1C1C;
         }
-        
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #1C1C1C 0%, #2E2E2E 50%, var(--ceit-orange) 100%);
@@ -58,36 +62,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             max-width: 400px;
             width: 100%;
         }
-        
+
         .login-header {
             background: linear-gradient(135deg, var(--ceit-dark) 0%, #2E2E2E 100%);
             color: white;
             padding: 30px;
             text-align: center;
         }
-        
+
         .logo {
             width: 60px;
             height: 60px;
             margin-bottom: 15px;
         }
-        
+
         .login-body {
             padding: 30px;
         }
-        
+
         .form-control {
             border-radius: 10px;
             border: 2px solid #e9ecef;
             padding: 12px 15px;
             transition: border-color 0.3s ease;
         }
-        
+
         .form-control:focus {
             border-color: var(--ceit-orange);
             box-shadow: 0 0 0 0.2rem rgba(191, 96, 19, 0.25);
         }
-        
+
         .btn-primary {
             background: linear-gradient(135deg, var(--ceit-orange) 0%, var(--ceit-light-orange) 100%);
             border: none;
@@ -96,12 +100,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-weight: 500;
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary:hover {
             transform: translateY(-1px);
             box-shadow: 0 3px 10px rgba(191, 96, 19, 0.4);
         }
-        
+
         .alert {
             border-radius: 10px;
             border: none;
@@ -153,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h4>Admin Login</h4>
                 <p class="mb-0">CEIT-SC Office Duty Tracker</p>
             </div>
-            
+
             <div class="login-body">
                 <?php if ($message): ?>
                     <div class="alert alert-<?php echo $message_type === 'success' ? 'success' : 'danger'; ?> mb-4" role="alert">
@@ -161,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?php echo htmlspecialchars($message); ?>
                     </div>
                 <?php endif; ?>
-                
+
                 <form method="POST">
                     <div class="mb-3">
                         <label class="form-label">
@@ -169,19 +173,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </label>
                         <input type="text" class="form-control" name="username" required>
                     </div>
-                    
+
                     <div class="mb-4">
                         <label class="form-label">
                             <i class="fas fa-lock"></i> Password
                         </label>
                         <input type="password" class="form-control" name="password" required>
                     </div>
-                    
+
                     <button type="submit" class="btn btn-primary w-100 mb-3">
                         <i class="fas fa-sign-in-alt"></i> Login
                     </button>
                 </form>
-                
+
                 <div class="text-center">
                     <a href="index.php" class="text-muted">
                         <i class="fas fa-arrow-left"></i> Back to Dashboard
@@ -203,7 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </p>
             <p class="footer-subtext mb-0">
                 This system is officially endorsed by the <strong>College of Engineering and Infomation Technology - Student Council</strong>.<br>
-                Valid for the entire term of AY 2025-2026.  
+                Valid for the entire term of AY 2025-2026.
                 <span class="d-block mt-1">© 2025 CEIT-SC. All Rights Reserved.</span>
             </p>
         </div>
