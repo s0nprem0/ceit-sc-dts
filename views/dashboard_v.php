@@ -42,7 +42,7 @@
                 <div class="card stats-card">
                     <div class="card-body text-center">
                         <i class="fas fa-users fa-4x mb-3"></i>
-                        <div class="stats-number"><?php echo $officer_stats['total_officers']; ?></div>
+                        <div class="stats-number"><?php echo isset($officer_stats['total_officers']) ? $officer_stats['total_officers'] : 0; ?></div>
                         <h5 class="mb-0">Total Officers</h5>
                         <small class="opacity-75">Registered in System</small>
                     </div>
@@ -52,7 +52,7 @@
                 <div class="card stats-card">
                     <div class="card-body text-center">
                         <i class="fas fa-clock fa-4x mb-3"></i>
-                        <div class="stats-number"><?php echo $officer_stats['active_duties']; ?></div>
+                        <div class="stats-number"><?php echo isset($officer_stats['active_duties']) ? $officer_stats['active_duties'] : 0; ?></div>
                         <h5 class="mb-0">Active Duties</h5>
                         <small class="opacity-75">Currently On Duty</small>
                     </div>
