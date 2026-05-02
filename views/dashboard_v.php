@@ -27,6 +27,7 @@
         </div>
     </nav>
 
+    <?php require_once __DIR__ . '/../helpers/Utils.php'; ?>
     <div class="container-fluid px-5 py-4">
         <?php if ($message): ?>
             <div class="alert alert-<?php echo $message_type; ?> fade show" role="alert">
@@ -224,10 +225,10 @@
                                                 <td>
                                                     <?php if ($log['status'] === 'Ongoing'): ?>
                                                         <span class="real-time-timer" data-start-time="<?php echo $log['duty_date'] . ' ' . $log['time_in']; ?>">
-                                                            <?php echo format_hours_minutes_seconds($log['total_hours']); ?>
+                                                            <?php echo Utils::formatHoursMinutesSeconds($log['total_hours']); ?>
                                                         </span>
                                                     <?php else: ?>
-                                                        <span class="fw-semibold"><?php echo format_hours_minutes($log['total_hours']); ?></span>
+                                                        <span class="fw-semibold"><?php echo Utils::formatHoursMinutes($log['total_hours']); ?></span>
                                                     <?php endif; ?>
                                                 </td>
                                                 <td>
