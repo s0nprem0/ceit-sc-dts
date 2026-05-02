@@ -1,6 +1,4 @@
 <?php
-
-session_start();
 require_once 'config.php';
 
 // Get the path from the URL

@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid px-5">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
-                <img src="CEIT-SCLogo(White).png" alt="CEIT-SC Logo" class="logo">
+                <img src="assets/ceit-sc_blk.svg" width="64px" alt="CEIT-SC Logo" class="logo">
                 <span>CEIT-SC Office Duty Tracker</span>
             </a>
             <div class="navbar-nav ms-auto">
